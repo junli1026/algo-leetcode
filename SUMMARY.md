@@ -1,4 +1,7 @@
-# Table of contents
+# Algorithms and leecode solutions
 
-* [algorithms and leetcode solution](README.md)
+* [Introduction](README.md)
+* [Stack]
+   * [Monotonic stack](stack/monotonic-stack.md)
+
 

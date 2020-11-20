@@ -43,9 +43,14 @@ for (int i = 0; i < data.size(); i++) {
 // right: [ 1, -1,  4,  4, -1, -1] 
 ```
 
-RelatedLeetcode problems:
 
-[Leetcode 84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)
+RelatedLeetcode problems:
+[84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)
+[85. Maximal Rectangle](https://leetcode.com/problems/maximal-rectangle/)
+[316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)
+[496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/)
+[503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/])
+[739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
 
 
 

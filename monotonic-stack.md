@@ -43,4 +43,12 @@ for (int i = 0; i < data.size(); i++) {
 // right: [ 1, -1,  4,  4, -1, -1] 
 ```
 
+RelatedLeetcode problems:
+
+[Leetcode 84. Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)
+
+
+
+
+
 

@@ -1,30 +1,64 @@
 # Segment tree
 
 ```C++
-// index:  0  1  2  3  4  5
-// data : [2, 1, 5, 6, 2, 3]. 
-vector<int> data({2,1,5,6,2,3});
-stack<int> st;
-
-vector<int> left(data.size(), -1);
-vector<int> right(data.size(), -1);
-
-for (int i = 0; i < data.size(); i++) {
-    if (st.empty() || data[st.top()] <= data[i]) {
-        /* search from i to left, the first element smaller than data[i] is data[st.top()] */
-        left[i] = st.empty() ? -1 : st.top();
-        st.push(i);
-    } else {
-        int j = st.top();
-        /* search from j to right, the first element smaller than data[j] is data[i] */
-        right[j] = i;
-        st.pop();
-        i--;
+   vector<long> tree;
+    
+    int first_power_of_2(int n) {
+        if ((n&(n-1)) != 0) { // n is not power of 2
+            int shift = 0;
+            while (n) {  
+                n >>= 1;  
+                shift ++;
+            }  
+            n = 1<<shift;
+        }
+        return n;
     }
-}
-// Results:
-// index:   0   1   2   3   4   5
-// data :  [2,  1,  5,  6,  2,  3]
-// left : [-1, -1,  1,  2,  1,  4] 
-// right: [ 1, -1,  4,  4, -1, -1] 
+    
+    void build(vector<int> &nums) {
+        int n = nums.size();
+        if (n == 0)
+            return;
+        
+        n = first_power_of_2(n);
+        
+        tree = vector<long>(n*2, 0);
+        for (int i = 0; i < nums.size(); i++) {
+            tree[i+n] = nums[i];
+        }
+        for (int i = n-1; i > 0; i--) {
+            tree[i] = tree[2*i] + tree[2*i+1];
+        }
+    }
+    
+    void update(int i, int val) {
+        int n = tree.size()/2;
+        i += n;
+        tree[i] = val;
+        
+        while (i > 0) {
+            int l = i%2 == 0 ? i : i-1;
+            int r = l+1;
+            i = l/2; 
+            tree[i] = tree[l] + tree[r];
+        }
+    }
+    
+    int sumRange(int i, int j) {
+        int n = tree.size()/2;
+        int l = i+n, r = j+n;
+        int ans = 0;
+        
+        while (l <= r) {
+            if (l%2 != 0) {
+                ans += tree[l++];
+            }
+            if (r%2 == 0) {
+                ans += tree[r--];   
+            }
+            l = l/2;
+            r = r/2;
+        }
+        return ans;
+    }
 ```

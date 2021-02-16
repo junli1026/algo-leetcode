@@ -34,13 +34,11 @@ vector<long> tree;
  void update(int i, int val) {
      int n = tree.size()/2;
      i += n;
-     tree[i] = val;
-
-     while (i > 0) {
-         int l = i%2 == 0 ? i : i-1;
-         int r = l+1;
-         i = l/2; 
-         tree[i] = tree[l] + tree[r];
+     int delta = val - tree[i];
+     
+     while (i) {
+         tree[i] += delta;
+         index /= 2;
      }
  }
 
